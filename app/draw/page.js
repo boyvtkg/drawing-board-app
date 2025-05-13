@@ -12,7 +12,7 @@ export default function DrawLobbyPage() {
   const handleCreate = () => {
     console.log("🟢 Creating room...");
     const code = generateCode();
-    const socket = io("http://localhost:8080");
+    const socket = io("https://drawing-board-app-zeta.vercel.app");
 
     socket.emit("create-room", code, () => {
       console.log("✅ Room created:", code);
@@ -29,7 +29,7 @@ export default function DrawLobbyPage() {
     const code = joinCode.trim();
     if (!code) return alert("Please enter room code.");
 
-    const socket = io("http://localhost:8080");
+    const socket = io("https://drawing-board-app-zeta.vercel.app");
     socket.emit("check-room", code, (exists) => {
       if (exists) {
         socket.disconnect();
