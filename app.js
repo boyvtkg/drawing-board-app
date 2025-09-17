@@ -10,7 +10,10 @@ const server = http.createServer((_, res) =>            // a basic HTTP server
 
 const io = new Server(server, {   // io is the Socket.IO server instance
   cors: {                 // cors ensures that frontend can talk to backend 
-    origin: "http://localhost:3000",
+    origin: [
+      "http://localhost:3000",
+      "https://drawing-board-app-zeta.vercel.app" // your deployed frontend
+    ],
     methods: ["GET", "POST"]
   },
 });
